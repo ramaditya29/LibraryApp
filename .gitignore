@@ -1,0 +1,6 @@
+target/dependency/
+.project
+.classpath
+.settings/
+target/classes/
+target/test-classes/
