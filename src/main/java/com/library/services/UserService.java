@@ -11,9 +11,10 @@ import com.library.models.Book;
 import com.library.models.User;
 
 public class UserService {
-	
+	//Initialization of User Datastore using Arraylist
 	ArrayList<User> users = new ArrayList<User>();
-	ArrayList<Book> books = new ArrayList<Book>();
+	
+	//Create User Method
 	public String createUser(String firstname, String lastname, String middlename, String age, String gender, long phone, int zip) { 
 		User user = new User();
 		if(!firstname.equals("") && !lastname.equals("") && !age.equals("") && !gender.equals(""))
@@ -37,6 +38,7 @@ public class UserService {
 			return "Some fields are missing";
 	}
 	
+	//Returns all the user in the datastore using json format
 	public String getAllUsers(){
 		JSONObject object = new JSONObject();
 		if(users.size() == 0){
@@ -47,6 +49,7 @@ public class UserService {
 		return object.toString();
 	}
 	
+	//Updates the user based on the Id and the property
 	public String updateUser(int userId, String property, String newVal){
 		String message = "";
 		if(findUserByID(userId)){
@@ -81,6 +84,9 @@ public class UserService {
 			return "UserID doesn't Exist";
 	}
 	
+	//Helper Functions
+	
+	//This finds in the datastore  whether particular user with userid exists or not 
 	public boolean findUserByID(int userId){
 		for(int index =0; index < users.size(); index++ ){
 			if(users.get(index).getId() == userId)
@@ -89,6 +95,7 @@ public class UserService {
 		return false;
 	}
 	
+	//This will be used when we are creating a user. This checks whether the user is already exists in the datastore or not.
 	public boolean findUser(String firstName, String lastName,  int age){
 		for(int index = 0; index < users.size(); index++){
 			if(users.get(index).getFirstname().equals(firstName) && users.get(index).getLastname().equals(lastName) && users.get(index).getAge() == age){

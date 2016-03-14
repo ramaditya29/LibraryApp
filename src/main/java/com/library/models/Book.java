@@ -1,5 +1,7 @@
 package com.library.models;
-
+/*
+ * Bean Class for the book. This can be used while we are creating a datastore using Arraylist.
+*/
 public class Book {
 	int id;
 	String bookName;

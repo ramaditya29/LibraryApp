@@ -1,5 +1,7 @@
 package com.library.models;
-
+/*
+ * Bean class for the User. This can be used when we are creating datastore for the User in the UserService to store the data as a single entity
+*/
 public class User {
 	int id;
 	String firstname;

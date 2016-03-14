@@ -8,11 +8,12 @@ import com.library.models.User;
 
 public class BookService {
 	
+	//Initialization of Books Datastore	
 	ArrayList<Book> booksInventory = new ArrayList<Book>();
 	
 	UserService userService = new UserService();
 	
-	
+	//This method will add the book and requires two parameters bookName and authors
 	public String addBook(String bookName, String authors){
 		Book books = new Book();
 		books.setId((int)(Math.random() * 1000000 + 1)); 
@@ -22,7 +23,9 @@ public class BookService {
 		booksInventory.add(books);
 		return "Book Created";
 	}
-	
+
+
+	//Returns all the books in the datastore in json format	
 	public String getAllBooks(){
 		JSONObject object = new JSONObject();
 		if(booksInventory.size() == 0){
@@ -34,6 +37,7 @@ public class BookService {
 		return object.toString();
 	}
 	
+	//Returns a particular book in the datastore in json format
 	public String findBookByName(String bookName){
 		ArrayList<Book> bookSearchResults = new ArrayList<Book>();
 		JSONObject object = new JSONObject();
@@ -49,6 +53,7 @@ public class BookService {
 		return object.toString();
 	}
 	
+	//When a user requests a book this method can be used.
 	public String checkOutBook(int userId, int bookId){
 		System.out.println(userId );
 		System.out.println(userService.findUserByID(userId));
